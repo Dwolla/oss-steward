@@ -11,13 +11,16 @@ jobs:
     name: dwolla-oss-scala-steward
     steps:
       - uses: actions/checkout@v4
-          
+
       - name: Generate token
         id: generate-token
         uses: tibdex/github-app-token@v2
         with:
           app_id: 212073
           private_key: ${{ secrets.APP_PRIVATE_KEY }}
+
+      - name: Install sbt
+        uses: sbt/setup-sbt@v1
 
       - name: Launch Scala Steward
         uses: scala-steward-org/scala-steward-action@v2
