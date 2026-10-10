@@ -18,6 +18,8 @@ jobs:
         with:
           app_id: 212073
           private_key: ${{ secrets.APP_PRIVATE_KEY }}
+          installation_retrieval_mode: organization
+          installation_retrieval_payload: ${{ github.repository_owner }}
 
       - name: Install sbt
         uses: sbt/setup-sbt@v1
