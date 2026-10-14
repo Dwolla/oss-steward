@@ -32,3 +32,4 @@ jobs:
           author-name: dwolla-oss-scala-steward[bot]
           github-app-id: 212073
           github-app-key: ${{ secrets.APP_PRIVATE_KEY }}
+          repo-config: default.scala-steward.conf
