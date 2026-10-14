@@ -5,12 +5,17 @@ on:
     - cron: '0 */4 * * *'
   workflow_dispatch:
 
+permissions:
+  contents: read
+
 jobs:
   steward:
     runs-on: ubuntu-latest
     name: dwolla-oss-scala-steward
     steps:
       - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
 
       - name: Generate token
         id: generate-token
