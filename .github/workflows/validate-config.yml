@@ -1,0 +1,23 @@
+name: validate-config
+
+on:
+  pull_request:
+  push:
+    branches: [main]
+
+permissions:
+  contents: read
+
+jobs:
+  validate-default-config:
+    runs-on: ubuntu-latest
+    name: validate default.scala-steward.conf
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+
+      - name: Validate default Scala Steward config
+        run: |
+          docker run --rm -v "$PWD":/work -w /work fthomas/scala-steward:latest \
+            validate-repo-config default.scala-steward.conf
